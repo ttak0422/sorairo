@@ -13,3 +13,10 @@
 
 > [!CAUTION]
 >  Please note that this is currently in an experimental phase. Destructive changes may be apply.
+
+## Usage
+
+```vim
+set termguicolors
+colorscheme sorairo
+```
