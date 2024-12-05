@@ -6,5 +6,5 @@ help:
 
 .PHONY: build
 build:
-	@vim -c 'source src/sorairo.vim' -c 'qa'
+	@nix run .#vim-for-build -- -c 'source src/sorairo.vim' -c 'qa'
 	@echo "build completed"
