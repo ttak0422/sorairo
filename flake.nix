@@ -23,54 +23,47 @@
           lib,
           ...
         }:
-        let
-          vim =
-            # for build
-            pkgs.vim_configurable.customize {
-              vimrcConfig.packages.myVimPackage = {
-                start = [
-                  (pkgs.vimUtils.buildVimPlugin {
-                    pname = "pgmnt-vim";
-                    version = inputs.pgmnt-vim.rev or "latest";
-                    src = inputs.pgmnt-vim;
-                  })
-                ];
-              };
-            };
-        in
         {
           packages.sorairo-vim = pkgs.vimUtils.buildVimPlugin {
             name = "sorairo-vim";
             src = lib.cleanSource ./.;
           };
-
-          apps.default =
+          apps =
             let
-              vim = pkgs.vim_configurable.customize {
-                vimrcConfig = {
-                  customRC = ''
-                    set termguicolors
-                    set background=light
-                    syntax on
-                    colorscheme sorairo
-                  '';
-                  packages.myVimPackage = {
-                    start = [
-                      self'.packages.sorairo-vim
-                    ];
-                  };
-                };
+              mkVimApp = cfg: {
+                type = "app";
+                program = "${pkgs.vim_configurable.customize { vimrcConfig = cfg; }}/bin/vim";
               };
             in
             {
-              type = "app";
-              program = "${vim}/bin/vim";
+              vim-for-build = mkVimApp {
+                packages.myVimPackage = {
+                  start = [
+                    (pkgs.vimUtils.buildVimPlugin {
+                      pname = "pgmnt-vim";
+                      version = inputs.pgmnt-vim.rev or "latest";
+                      src = inputs.pgmnt-vim;
+                    })
+                  ];
+                };
+              };
+              test-vim = mkVimApp {
+                customRC = ''
+                  set termguicolors
+                  set background=light
+                  syntax on
+                  colorscheme sorairo
+                '';
+                packages.myVimPackage = {
+                  start = [
+                    self'.packages.sorairo-vim
+                  ];
+                };
+              };
             };
 
           devShells.default = pkgs.mkShell {
-            packages = [
-              vim
-            ];
+            packages = [ ];
           };
         };
     });
