@@ -44,7 +44,10 @@
                   name = "vint";
                   entry = "${pkgs.vim-vint}/bin/vint";
                   files = "\\.vim$";
-                  excludes = [ "colors/sorairo\\.vim" ];
+                  excludes = [
+                    "colors/sorairo.vim"
+                    "src/template.vim"
+                  ];
                 };
               };
             };
