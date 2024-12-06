@@ -56,7 +56,7 @@
             let
               mkVimApp = cfg: {
                 type = "app";
-                program = "${pkgs.vim_configurable.customize { vimrcConfig = cfg; }}/bin/vim";
+                program = "${pkgs.vim-full.customize { vimrcConfig = cfg; }}/bin/vim";
               };
             in
             {
