@@ -58,6 +58,12 @@
                 type = "app";
                 program = "${pkgs.vim-full.customize { vimrcConfig = cfg; }}/bin/vim";
               };
+              mkNeovimApp = cfg: {
+                type = "app";
+                program = "${
+                  with pkgs; wrapNeovimUnstable neovim-unwrapped (neovimUtils.makeNeovimConfig cfg)
+                }/bin/nvim";
+              };
             in
             {
               vim-for-build = mkVimApp {
@@ -83,6 +89,14 @@
                     self'.packages.sorairo-vim
                   ];
                 };
+              };
+              test-nvim = mkNeovimApp {
+                plugins = with pkgs.vimPlugins; [
+                  {
+                    plugin = self'.packages.sorairo-vim;
+                    config = "colorscheme sorairo";
+                  }
+                ];
               };
             };
 
