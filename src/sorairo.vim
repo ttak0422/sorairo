@@ -1,8 +1,8 @@
 let s:palette = {
   \ 'white': '#ffffff',
-  \ 'prm0': '#555573',
+  \ 'prm0': '#000000',
   \ 'prm1': '#73739b',
-  \ 'sub0': '#fdfdff',
+  \ 'sub0': '#ff0000',
   \ 'sub1': '#f1f1f3',
   \ 'sub2': '#e4e4e6',
   \ 'grey0': '#666666',
