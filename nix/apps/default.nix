@@ -42,9 +42,7 @@ in
       colorscheme sorairo
     '';
     packages.myVimPackage = {
-      start = [
-        self'.packages.sorairo-vim
-      ];
+      start = [ self'.packages.sorairo-vim ];
     };
   };
   test-nvim = mkNeovimApp {

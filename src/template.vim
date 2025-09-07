@@ -6,13 +6,14 @@ hi clear
 if exists('syntax_on')
   syntax reset
 endif
+set termguicolors
 let g:colors_name = 'sorairo'
-{{ groups }}
+{{ light_groups }}
 {{ links }}
 if has('nvim')
-  {{ neovim_groups }}
+  {{ light_neovim_groups }}
   {{ neovim_links }}
-  {{ neovim_term }}
+  {{ light_neovim_term }}
 else
-  {{ vim_term }}
+  {{ light_vim_term }}
 endif
