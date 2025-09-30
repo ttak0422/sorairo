@@ -850,6 +850,51 @@ function! s:create_highlights(palette)
   " }}}
 
   " plugins {{{
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyERRORBorder' ], {
+        \ 'guifg': c.dark_red,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyWARNBorder' ], {
+        \ 'guifg': c.dark_yellow,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyINFOBorder' ], {
+        \ 'guifg': c.dark_blue,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyDEBUGBorder' ], {
+        \ 'guifg': c.dark_cyan,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyTRACEBorder' ], {
+        \ 'guifg': c.dark_cyan,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyERRORIcon', 'NotifyERRORTitle' ], {
+        \ 'guifg': c.red,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyWARNIcon', 'NotifyWARNTitle' ], {
+        \ 'guifg': c.yellow,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyINFOIcon', 'NotifyINFOTitle' ], {
+        \ 'guifg': c.blue,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyDEBUGIcon', 'NotifyDEBUGTitle' ], {
+        \ 'guifg': c.cyan,
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ [ 'NotifyTRACEIcon', 'NotifyTRACETitle' ], {
+        \ 'guifg': c.cyan,
+        \ }))
+  call add(neovim_links, pgmnt#hi#link('NotifyERRORBody', 'Normal'))
+  call add(neovim_links, pgmnt#hi#link('NotifyWARNBody', 'Normal'))
+  call add(neovim_links, pgmnt#hi#link('NotifyINFOBody', 'Normal'))
+  call add(neovim_links, pgmnt#hi#link('NotifyDEBUGBody', 'Normal'))
+  call add(neovim_links, pgmnt#hi#link('NotifyTRACEBody', 'Normal'))
   " }}}
 
   return {

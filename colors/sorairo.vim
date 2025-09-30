@@ -1,4 +1,4 @@
-" build with pgmnt.vim (2025-09-20 22:06+0900)
+" build with pgmnt.vim (2025-09-30 23:23+0900)
 if !has('gui_running') && &t_Co < 256
   finish
 endif
@@ -189,6 +189,21 @@ if has('nvim')
   hi @diff.plus gui=bold guifg=#6bb449
   hi @diff.minus gui=bold guifg=#ec909a
   hi @diff.delta gui=bold guifg=#5ba8df
+  hi NotifyERRORBorder guifg=#d73445
+  hi NotifyWARNBorder guifg=#ac8f37
+  hi NotifyINFOBorder guifg=#105b91
+  hi NotifyDEBUGBorder guifg=#3d6b79
+  hi NotifyTRACEBorder guifg=#3d6b79
+  hi NotifyERRORIcon guifg=#e9616f
+  hi NotifyERRORTitle guifg=#e9616f
+  hi NotifyWARNIcon guifg=#d5b042
+  hi NotifyWARNTitle guifg=#d5b042
+  hi NotifyINFOIcon guifg=#0e80d1
+  hi NotifyINFOTitle guifg=#0e80d1
+  hi NotifyDEBUGIcon guifg=#4b8b9f
+  hi NotifyDEBUGTitle guifg=#4b8b9f
+  hi NotifyTRACEIcon guifg=#4b8b9f
+  hi NotifyTRACETitle guifg=#4b8b9f
   hi! link @variable.builtin @variable
   hi! link @variable.parameter.builtin @variable.parameter
   hi! link @constant.builtin @constant
@@ -231,6 +246,11 @@ if has('nvim')
   hi! link @tag Tag
   hi! link @tag.attribute @property
   hi! link @tag.delimiter Delimiter
+  hi! link NotifyERRORBody Normal
+  hi! link NotifyWARNBody Normal
+  hi! link NotifyINFOBody Normal
+  hi! link NotifyDEBUGBody Normal
+  hi! link NotifyTRACEBody Normal
   let g:terminal_color_0 = '#545472'
   let g:terminal_color_1 = '#e9616f'
   let g:terminal_color_2 = '#549536'
