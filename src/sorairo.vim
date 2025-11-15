@@ -144,24 +144,24 @@ function! s:create_highlights(palette)
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffAdd' ], {
-        \ 'guifg': c.light_green,
-        \ 'guibg': 'NONE',
+        \ 'guifg': 'NONE',
+        \ 'guibg': c.light_green,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffChange' ], {
-        \ 'guifg': c.light_blue,
-        \ 'guibg': 'NONE',
+        \ 'guifg': 'NONE',
+        \ 'guibg': c.light_blue,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffDelete' ], {
-        \ 'guifg': c.light_red,
-        \ 'guibg': 'NONE',
+        \ 'guifg': 'NONE',
+        \ 'guibg': c.light_red,
         \ 'gui': 'NONE',
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffText' ], {
-        \ 'guifg': c.light_cyan,
-        \ 'guibg': 'NONE',
+        \ 'guifg': 'NONE',
+        \ 'guibg': c.light_cyan,
         \ }))
   call add(links, pgmnt#hi#link('TermCursor', 'Cursor'))
   call extend(groups, pgmnt#hi#group(
@@ -850,6 +850,7 @@ function! s:create_highlights(palette)
   " }}}
 
   " plugins {{{
+  " nvim-notify
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ 'NotifyERRORBorder' ], {
         \ 'guifg': c.dark_red,
@@ -895,6 +896,50 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('NotifyINFOBody', 'Normal'))
   call add(neovim_links, pgmnt#hi#link('NotifyDEBUGBody', 'Normal'))
   call add(neovim_links, pgmnt#hi#link('NotifyTRACEBody', 'Normal'))
+  " gitsigns.nvim
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsAdd'], {
+        \ 'guifg': c.light_green,
+        \ 'guibg': 'NONE',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsChange'], {
+        \ 'guifg': c.light_blue,
+        \ 'guibg': 'NONE',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsDelete'], {
+        \ 'guifg': c.light_red,
+        \ 'guibg': 'NONE',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsAddInline'], {
+        \ 'guifg': c.white,
+        \ 'guibg': c.light_green,
+        \ 'gui': 'bold',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsChangeInline'], {
+        \ 'guifg': c.white,
+        \ 'guibg': c.light_blue,
+        \ 'gui': 'bold',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsDeleteInline'], {
+        \ 'guifg': c.white,
+        \ 'guibg': c.light_red,
+        \ 'gui': 'bold',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsAddPreview'], {
+        \ 'guifg': c.light_green,
+        \ 'guibg': 'NONE',
+        \ }))
+  call extend(neovim_groups, pgmnt#hi#group(
+        \ ['GitSignsDeletePreview'], {
+        \ 'guifg': c.light_red,
+        \ 'guibg': 'NONE',
+        \ }))
   " }}}
 
   return {

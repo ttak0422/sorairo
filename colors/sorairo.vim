@@ -1,4 +1,4 @@
-" build with pgmnt.vim (2025-09-30 23:23+0900)
+" build with pgmnt.vim (2025-11-15 23:09+0900)
 if !has('gui_running') && &t_Co < 256
   finish
 endif
@@ -13,10 +13,10 @@ hi Conceal gui=bold guifg=#666666
 hi Cursor gui=reverse guibg=NONE guifg=NONE
 hi CursorLine cterm=NONE guibg=#f7f7fa
 hi Directory guibg=NONE guifg=#6bb449
-hi DiffAdd guibg=NONE guifg=#6bb449
-hi DiffChange guibg=NONE guifg=#5ba8df
-hi DiffDelete gui=NONE guibg=NONE guifg=#ec909a
-hi DiffText guibg=NONE guifg=#6fa6b8
+hi DiffAdd guibg=#6bb449 guifg=NONE
+hi DiffChange guibg=#5ba8df guifg=NONE
+hi DiffDelete gui=NONE guibg=#ec909a guifg=NONE
+hi DiffText guibg=#6fa6b8 guifg=NONE
 hi ErrorMsg gui=bold,underline guifg=#e9616f guisp=#e9616f
 hi WinSeparator guifg=#bebebe
 hi Folded guibg=NONE guifg=#666666
@@ -204,6 +204,14 @@ if has('nvim')
   hi NotifyDEBUGTitle guifg=#4b8b9f
   hi NotifyTRACEIcon guifg=#4b8b9f
   hi NotifyTRACETitle guifg=#4b8b9f
+  hi GitSignsAdd guibg=NONE guifg=#6bb449
+  hi GitSignsChange guibg=NONE guifg=#5ba8df
+  hi GitSignsDelete guibg=NONE guifg=#ec909a
+  hi GitSignsAddInline gui=bold guibg=#6bb449 guifg=#ededed
+  hi GitSignsChangeInline gui=bold guibg=#5ba8df guifg=#ededed
+  hi GitSignsDeleteInline gui=bold guibg=#ec909a guifg=#ededed
+  hi GitSignsAddPreview guibg=NONE guifg=#6bb449
+  hi GitSignsDeletePreview guibg=NONE guifg=#ec909a
   hi! link @variable.builtin @variable
   hi! link @variable.parameter.builtin @variable.parameter
   hi! link @constant.builtin @constant
