@@ -163,6 +163,7 @@ function! s:create_highlights(palette)
         \ 'guifg': 'NONE',
         \ 'guibg': c.light_cyan,
         \ }))
+  call add(links, pgmnt#hi#link('DiffTextAdd', 'DiffText'))
   call add(links, pgmnt#hi#link('TermCursor', 'Cursor'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'ErrorMsg' ], {
@@ -170,6 +171,9 @@ function! s:create_highlights(palette)
         \ 'gui': 'bold,underline',
         \ 'guisp': c.red,
         \ }))
+  call add(links, pgmnt#hi#link('OkMsg', 'MoreMsg'))
+  call add(links, pgmnt#hi#link('StderrMsg', 'ErrorMsg'))
+  call add(links, pgmnt#hi#link('StdoutMsg', 'MsgArea'))
   call add(links, pgmnt#hi#link('VertSplit', 'WinSeparator'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'WinSeparator' ], {
@@ -240,6 +244,8 @@ function! s:create_highlights(palette)
         \ 'guibg': c.dim_bg,
         \ }))
   call add(links, pgmnt#hi#link('FloatBorder', 'NormalFloat'))
+  call add(links, pgmnt#hi#link('FloatShadow', 'NormalFloat'))
+  call add(links, pgmnt#hi#link('FloatShadowThrough', 'NormalFloat'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'FloatTitle' ], {
         \ 'guifg': c.orange,
@@ -275,10 +281,16 @@ function! s:create_highlights(palette)
         \ }))
   call add(links, pgmnt#hi#link('PmenuMatch', 'Pmenu'))
   call add(links, pgmnt#hi#link('PmenuMatchSel', 'PmenuSel'))
+  call add(links, pgmnt#hi#link('PmenuBorder', 'Pmenu'))
+  call add(links, pgmnt#hi#link('PmenuShadow', 'Pmenu'))
+  call add(links, pgmnt#hi#link('PmenuShadowThrough', 'Pmenu'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'ComplMatchIns' ], {
         \ 'gui': 'bold',
         \ }))
+  call add(links, pgmnt#hi#link('PreInsert', 'ComplMatchIns'))
+  call add(links, pgmnt#hi#link('ComplHint', 'Comment'))
+  call add(links, pgmnt#hi#link('ComplHintMore', 'MoreMsg'))
   call add(links, pgmnt#hi#link('Question', 'MoreMsg'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'QuickFixLine' ], {
@@ -293,6 +305,7 @@ function! s:create_highlights(palette)
         \ 'guibg': c.blue,
         \ }))
   call add(links, pgmnt#hi#link('SnippetTabstop', 'Visual'))
+  call add(links, pgmnt#hi#link('SnippetTabstopActive', 'Visual'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'SpecialKey' ], {
         \ 'guifg': c.light_dim_fg,
@@ -530,6 +543,9 @@ function! s:create_highlights(palette)
         \ [ 'LspInlayHint' ], {
         \ 'guifg': c.grey,
         \ }))
+  call add(links, pgmnt#hi#link('LspCodeLens', 'LspInlayHint'))
+  call add(links, pgmnt#hi#link('LspCodeLensSeparator', 'LspInlayHint'))
+  call add(links, pgmnt#hi#link('LspSignatureActiveParameter', 'Visual'))
   " }}}
 
   " diagnostic highlights {{{
@@ -636,7 +652,7 @@ function! s:create_highlights(palette)
         \ }))
   call add(neovim_links, pgmnt#hi#link('@module.builtin', '@module'))
   call add(neovim_links, pgmnt#hi#link('@label', 'Label'))
-  call add(neovim_links, pgmnt#hi#link('@label', 'String'))
+  call add(neovim_links, pgmnt#hi#link('@string', 'String'))
   call add(neovim_links, pgmnt#hi#link('@string.documentation', 'Comment'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@string.regexp' ], {
@@ -675,34 +691,34 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('@property', '@variable.member'))
   call add(neovim_links, pgmnt#hi#link('@function', 'Function'))
   call add(neovim_links, pgmnt#hi#link('@function.builtin', '@function'))
-  " call @function.call
-  " call @function.macro
-  " call @function.method
-  " call @function.method.call
+  call add(neovim_links, pgmnt#hi#link('@function.call', '@function'))
+  call add(neovim_links, pgmnt#hi#link('@function.macro', 'Macro'))
+  call add(neovim_links, pgmnt#hi#link('@function.method', '@function'))
+  call add(neovim_links, pgmnt#hi#link('@function.method.call', '@function.method'))
   call add(neovim_links, pgmnt#hi#link('@constructor', 'Identifier'))
   call add(neovim_links, pgmnt#hi#link('@operator', 'Operator'))
   call add(neovim_links, pgmnt#hi#link('@keyword', 'Keyword'))
-  " @keyword.coroutine
-  " @keyword.function
+  call add(neovim_links, pgmnt#hi#link('@keyword.coroutine', '@keyword'))
+  call add(neovim_links, pgmnt#hi#link('@keyword.function', '@keyword'))
   call add(neovim_links, pgmnt#hi#link('@keyword.operator', 'Operator'))
   call add(neovim_links, pgmnt#hi#link('@keyword.import', 'PreProc'))
-  " @keyword.type
-  " @keyword.modifier
+  call add(neovim_links, pgmnt#hi#link('@keyword.type', 'Structure'))
+  call add(neovim_links, pgmnt#hi#link('@keyword.modifier', 'StorageClass'))
   call add(neovim_links, pgmnt#hi#link('@keyword.repeat', 'Repeat'))
-  " @keyword.return
-  " @keyword.debug
+  call add(neovim_links, pgmnt#hi#link('@keyword.return', '@keyword'))
+  call add(neovim_links, pgmnt#hi#link('@keyword.debug', 'Debug'))
   call add(neovim_links, pgmnt#hi#link('@keyword.exception', 'Exception'))
   call add(neovim_links, pgmnt#hi#link('@keyword.conditional', 'Conditional'))
   call add(neovim_links, pgmnt#hi#link('@keyword.conditional.ternary', 'Conditional'))
-  " @keyword.directive
-  " @keyword.directive.define
+  call add(neovim_links, pgmnt#hi#link('@keyword.directive', 'PreProc'))
+  call add(neovim_links, pgmnt#hi#link('@keyword.directive.define', 'Define'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@punctuation.delimiter', '@punctuation.bracket' ], {
         \ 'guifg': c.dark_magenta,
         \ }))
   call add(neovim_links, pgmnt#hi#link('@punctuation.special', 'Special'))
   call add(neovim_links, pgmnt#hi#link('@comment', 'Comment'))
-  " @comment.documentation
+  call add(neovim_links, pgmnt#hi#link('@comment.documentation', 'SpecialComment'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@comment.error' ], {
         \ 'guifg': c.normal_bg,
@@ -737,6 +753,12 @@ function! s:create_highlights(palette)
         \ }))
   call add(neovim_links, pgmnt#hi#link('@markup.underline', 'Underlined'))
   call add(neovim_links, pgmnt#hi#link('@markup.heading', 'Title'))
+  call add(neovim_links, pgmnt#hi#link('@markup.heading.1', '@markup.heading.1.markdown'))
+  call add(neovim_links, pgmnt#hi#link('@markup.heading.2', '@markup.heading.2.markdown'))
+  call add(neovim_links, pgmnt#hi#link('@markup.heading.3', '@markup.heading.3.markdown'))
+  call add(neovim_links, pgmnt#hi#link('@markup.heading.4', '@markup.heading.4.markdown'))
+  call add(neovim_links, pgmnt#hi#link('@markup.heading.5', '@markup.heading.5.markdown'))
+  call add(neovim_links, pgmnt#hi#link('@markup.heading.6', '@markup.heading.6.markdown'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@markup.heading.1.markdown' ], {
         \ 'guifg': c.dark_blue,
@@ -769,16 +791,14 @@ function! s:create_highlights(palette)
         \ }))
   call add(neovim_links, pgmnt#hi#link('@markup.quote', 'Special'))
   call add(neovim_links, pgmnt#hi#link('@markup.math', 'Special'))
-  " @markup.link
-  " @markup.link.label
-  " @markup.link.url
+  call add(neovim_links, pgmnt#hi#link('@markup.link', 'Underlined'))
+  call add(neovim_links, pgmnt#hi#link('@markup.link.label', 'Special'))
   call add(neovim_links, pgmnt#hi#link('@markup.link.url', 'Special'))
-  " @markup.raw
   call add(neovim_links, pgmnt#hi#link('@markup.raw', 'String'))
-  " @markup.raw.block
-  " @markup.list
-  " @markup.list.checked
-  " @markup.list.unchecked
+  call add(neovim_links, pgmnt#hi#link('@markup.raw.block', '@markup.raw'))
+  call add(neovim_links, pgmnt#hi#link('@markup.list', 'Special'))
+  call add(neovim_links, pgmnt#hi#link('@markup.list.checked', '@markup.list'))
+  call add(neovim_links, pgmnt#hi#link('@markup.list.unchecked', '@markup.list'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@diff.plus' ], {
         \ 'guifg': c.light_green,
@@ -795,44 +815,45 @@ function! s:create_highlights(palette)
         \ 'gui': 'bold',
         \ }))
   call add(neovim_links, pgmnt#hi#link('@tag', 'Tag'))
+  call add(neovim_links, pgmnt#hi#link('@tag.builtin', '@tag'))
   call add(neovim_links, pgmnt#hi#link('@tag.attribute', '@property'))
   call add(neovim_links, pgmnt#hi#link('@tag.delimiter', 'Delimiter'))
   " }}}
 
   " lsp semantic highlight groups {{{
-  " @lsp.type.class
-  " @lsp.type.comment
-  " @lsp.type.decorator
-  " @lsp.type.enum
-  " @lsp.type.enumMember
-  " @lsp.type.event
-  " @lsp.type.function
-  " @lsp.type.interface
-  " @lsp.type.keyword
-  " @lsp.type.macro
-  " @lsp.type.method
-  " @lsp.type.modifier
-  " @lsp.type.namespace
-  " @lsp.type.number
-  " @lsp.type.operator
-  " @lsp.type.parameter
-  " @lsp.type.property
-  " @lsp.type.regexp
-  " @lsp.type.string
-  " @lsp.type.struct
-  " @lsp.type.type
-  " @lsp.type.typeParameter
-  " @lsp.type.variable
-  " @lsp.mod.abstract
-  " @lsp.mod.async
-  " @lsp.mod.declaration
-  " @lsp.mod.defaultLibrary
-  " @lsp.mod.definition
-  " @lsp.mod.deprecated
-  " @lsp.mod.documentation
-  " @lsp.mod.modification
-  " @lsp.mod.readonly
-  " @lsp.mod.static
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.class', 'Type'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.comment', 'Comment'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.decorator', '@attribute'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.enum', 'Type'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.enumMember', 'Constant'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.event', 'Identifier'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.function', 'Function'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.interface', 'Type'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.keyword', 'Keyword'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.macro', 'Macro'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.method', 'Function'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.modifier', 'StorageClass'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.namespace', '@module'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.number', 'Number'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.operator', 'Operator'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.parameter', '@variable.parameter'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.property', '@property'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.regexp', '@string.regexp'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.string', 'String'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.struct', 'Structure'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.type', 'Type'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.typeParameter', 'Type'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.variable', '@variable'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.abstract', 'StorageClass'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.async', '@keyword.coroutine'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.declaration', '@lsp.mod.definition'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.defaultLibrary', '@variable.builtin'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.definition', 'Identifier'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.deprecated', 'DiagnosticDeprecated'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.documentation', 'SpecialComment'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.modification', 'Identifier'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.readonly', 'Constant'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.mod.static', 'StorageClass'))
   " }}}
 
   " terminal {{{

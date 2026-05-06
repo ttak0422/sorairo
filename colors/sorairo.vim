@@ -1,4 +1,4 @@
-" build with pgmnt.vim (2025-11-15 23:09+0900)
+" build with pgmnt.vim (2026-05-06 20:12+0900)
 if !has('gui_running') && &t_Co < 256
   finish
 endif
@@ -212,13 +212,29 @@ if has('nvim')
   hi GitSignsDeleteInline gui=bold guibg=#ec909a guifg=#ededed
   hi GitSignsAddPreview guibg=NONE guifg=#6bb449
   hi GitSignsDeletePreview guibg=NONE guifg=#ec909a
+  hi! link DiffTextAdd DiffText
+  hi! link OkMsg MoreMsg
+  hi! link StderrMsg ErrorMsg
+  hi! link StdoutMsg MsgArea
+  hi! link FloatShadow NormalFloat
+  hi! link FloatShadowThrough NormalFloat
+  hi! link PmenuBorder Pmenu
+  hi! link PmenuShadow Pmenu
+  hi! link PmenuShadowThrough Pmenu
+  hi! link PreInsert ComplMatchIns
+  hi! link ComplHint Comment
+  hi! link ComplHintMore MoreMsg
+  hi! link SnippetTabstopActive Visual
+  hi! link LspCodeLens LspInlayHint
+  hi! link LspCodeLensSeparator LspInlayHint
+  hi! link LspSignatureActiveParameter Visual
   hi! link @variable.builtin @variable
   hi! link @variable.parameter.builtin @variable.parameter
   hi! link @constant.builtin @constant
   hi! link @constant.macro @constant
   hi! link @module.builtin @module
   hi! link @label Label
-  hi! link @label String
+  hi! link @string String
   hi! link @string.documentation Comment
   hi! link @string.special Special
   hi! link @string.special.url @string.special.path
@@ -234,26 +250,85 @@ if has('nvim')
   hi! link @property @variable.member
   hi! link @function Function
   hi! link @function.builtin @function
+  hi! link @function.call @function
+  hi! link @function.macro Macro
+  hi! link @function.method @function
+  hi! link @function.method.call @function.method
   hi! link @constructor Identifier
   hi! link @operator Operator
   hi! link @keyword Keyword
+  hi! link @keyword.coroutine @keyword
+  hi! link @keyword.function @keyword
   hi! link @keyword.operator Operator
   hi! link @keyword.import PreProc
+  hi! link @keyword.type Structure
+  hi! link @keyword.modifier StorageClass
   hi! link @keyword.repeat Repeat
+  hi! link @keyword.return @keyword
+  hi! link @keyword.debug Debug
   hi! link @keyword.exception Exception
   hi! link @keyword.conditional Conditional
   hi! link @keyword.conditional.ternary Conditional
+  hi! link @keyword.directive PreProc
+  hi! link @keyword.directive.define Define
   hi! link @punctuation.special Special
   hi! link @comment Comment
+  hi! link @comment.documentation SpecialComment
   hi! link @markup.underline Underlined
   hi! link @markup.heading Title
+  hi! link @markup.heading.1 @markup.heading.1.markdown
+  hi! link @markup.heading.2 @markup.heading.2.markdown
+  hi! link @markup.heading.3 @markup.heading.3.markdown
+  hi! link @markup.heading.4 @markup.heading.4.markdown
+  hi! link @markup.heading.5 @markup.heading.5.markdown
+  hi! link @markup.heading.6 @markup.heading.6.markdown
   hi! link @markup.quote Special
   hi! link @markup.math Special
+  hi! link @markup.link Underlined
+  hi! link @markup.link.label Special
   hi! link @markup.link.url Special
   hi! link @markup.raw String
+  hi! link @markup.raw.block @markup.raw
+  hi! link @markup.list Special
+  hi! link @markup.list.checked @markup.list
+  hi! link @markup.list.unchecked @markup.list
   hi! link @tag Tag
+  hi! link @tag.builtin @tag
   hi! link @tag.attribute @property
   hi! link @tag.delimiter Delimiter
+  hi! link @lsp.type.class Type
+  hi! link @lsp.type.comment Comment
+  hi! link @lsp.type.decorator @attribute
+  hi! link @lsp.type.enum Type
+  hi! link @lsp.type.enumMember Constant
+  hi! link @lsp.type.event Identifier
+  hi! link @lsp.type.function Function
+  hi! link @lsp.type.interface Type
+  hi! link @lsp.type.keyword Keyword
+  hi! link @lsp.type.macro Macro
+  hi! link @lsp.type.method Function
+  hi! link @lsp.type.modifier StorageClass
+  hi! link @lsp.type.namespace @module
+  hi! link @lsp.type.number Number
+  hi! link @lsp.type.operator Operator
+  hi! link @lsp.type.parameter @variable.parameter
+  hi! link @lsp.type.property @property
+  hi! link @lsp.type.regexp @string.regexp
+  hi! link @lsp.type.string String
+  hi! link @lsp.type.struct Structure
+  hi! link @lsp.type.type Type
+  hi! link @lsp.type.typeParameter Type
+  hi! link @lsp.type.variable @variable
+  hi! link @lsp.mod.abstract StorageClass
+  hi! link @lsp.mod.async @keyword.coroutine
+  hi! link @lsp.mod.declaration @lsp.mod.definition
+  hi! link @lsp.mod.defaultLibrary @variable.builtin
+  hi! link @lsp.mod.definition Identifier
+  hi! link @lsp.mod.deprecated DiagnosticDeprecated
+  hi! link @lsp.mod.documentation SpecialComment
+  hi! link @lsp.mod.modification Identifier
+  hi! link @lsp.mod.readonly Constant
+  hi! link @lsp.mod.static StorageClass
   hi! link NotifyERRORBody Normal
   hi! link NotifyWARNBody Normal
   hi! link NotifyINFOBody Normal
