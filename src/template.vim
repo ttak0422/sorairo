@@ -17,3 +17,5 @@ if has('nvim')
 else
   {{ light_vim_term }}
 endif
+
+command! SorairoPreview call sorairo#preview#open()

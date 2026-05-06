@@ -20,3 +20,5 @@
 set termguicolors
 colorscheme sorairo
 ```
+
+Use `:SorairoPreview` to open a scratch buffer that previews representative highlight groups.

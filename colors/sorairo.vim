@@ -1,4 +1,4 @@
-" build with pgmnt.vim (2026-05-06 20:12+0900)
+" build with pgmnt.vim (2026-05-06 20:20+0900)
 if !has('gui_running') && &t_Co < 256
   finish
 endif
@@ -353,3 +353,5 @@ if has('nvim')
 else
   let g:terminal_ansi_colors = ['#545472', '#e9616f', '#549536', '#d5b042', '#0e80d1', '#a470c6', '#4b8b9f', '#dfdfe9', '#444467', '#eb4556', '#47862a', '#d5a927', '#0772be', '#9958c4', '#3d7e92', '#a5a5a5']
 endif
+
+command! SorairoPreview call sorairo#preview#open()

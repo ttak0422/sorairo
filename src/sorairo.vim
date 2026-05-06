@@ -163,7 +163,7 @@ function! s:create_highlights(palette)
         \ 'guifg': 'NONE',
         \ 'guibg': c.light_cyan,
         \ }))
-  call add(links, pgmnt#hi#link('DiffTextAdd', 'DiffText'))
+  call add(neovim_links, pgmnt#hi#link('DiffTextAdd', 'DiffText'))
   call add(links, pgmnt#hi#link('TermCursor', 'Cursor'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'ErrorMsg' ], {
@@ -171,9 +171,9 @@ function! s:create_highlights(palette)
         \ 'gui': 'bold,underline',
         \ 'guisp': c.red,
         \ }))
-  call add(links, pgmnt#hi#link('OkMsg', 'MoreMsg'))
-  call add(links, pgmnt#hi#link('StderrMsg', 'ErrorMsg'))
-  call add(links, pgmnt#hi#link('StdoutMsg', 'MsgArea'))
+  call add(neovim_links, pgmnt#hi#link('OkMsg', 'MoreMsg'))
+  call add(neovim_links, pgmnt#hi#link('StderrMsg', 'ErrorMsg'))
+  call add(neovim_links, pgmnt#hi#link('StdoutMsg', 'MsgArea'))
   call add(links, pgmnt#hi#link('VertSplit', 'WinSeparator'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'WinSeparator' ], {
@@ -244,8 +244,8 @@ function! s:create_highlights(palette)
         \ 'guibg': c.dim_bg,
         \ }))
   call add(links, pgmnt#hi#link('FloatBorder', 'NormalFloat'))
-  call add(links, pgmnt#hi#link('FloatShadow', 'NormalFloat'))
-  call add(links, pgmnt#hi#link('FloatShadowThrough', 'NormalFloat'))
+  call add(neovim_links, pgmnt#hi#link('FloatShadow', 'NormalFloat'))
+  call add(neovim_links, pgmnt#hi#link('FloatShadowThrough', 'NormalFloat'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'FloatTitle' ], {
         \ 'guifg': c.orange,
@@ -281,16 +281,16 @@ function! s:create_highlights(palette)
         \ }))
   call add(links, pgmnt#hi#link('PmenuMatch', 'Pmenu'))
   call add(links, pgmnt#hi#link('PmenuMatchSel', 'PmenuSel'))
-  call add(links, pgmnt#hi#link('PmenuBorder', 'Pmenu'))
-  call add(links, pgmnt#hi#link('PmenuShadow', 'Pmenu'))
-  call add(links, pgmnt#hi#link('PmenuShadowThrough', 'Pmenu'))
+  call add(neovim_links, pgmnt#hi#link('PmenuBorder', 'Pmenu'))
+  call add(neovim_links, pgmnt#hi#link('PmenuShadow', 'Pmenu'))
+  call add(neovim_links, pgmnt#hi#link('PmenuShadowThrough', 'Pmenu'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'ComplMatchIns' ], {
         \ 'gui': 'bold',
         \ }))
-  call add(links, pgmnt#hi#link('PreInsert', 'ComplMatchIns'))
-  call add(links, pgmnt#hi#link('ComplHint', 'Comment'))
-  call add(links, pgmnt#hi#link('ComplHintMore', 'MoreMsg'))
+  call add(neovim_links, pgmnt#hi#link('PreInsert', 'ComplMatchIns'))
+  call add(neovim_links, pgmnt#hi#link('ComplHint', 'Comment'))
+  call add(neovim_links, pgmnt#hi#link('ComplHintMore', 'MoreMsg'))
   call add(links, pgmnt#hi#link('Question', 'MoreMsg'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'QuickFixLine' ], {
@@ -305,7 +305,7 @@ function! s:create_highlights(palette)
         \ 'guibg': c.blue,
         \ }))
   call add(links, pgmnt#hi#link('SnippetTabstop', 'Visual'))
-  call add(links, pgmnt#hi#link('SnippetTabstopActive', 'Visual'))
+  call add(neovim_links, pgmnt#hi#link('SnippetTabstopActive', 'Visual'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'SpecialKey' ], {
         \ 'guifg': c.light_dim_fg,
@@ -543,9 +543,9 @@ function! s:create_highlights(palette)
         \ [ 'LspInlayHint' ], {
         \ 'guifg': c.grey,
         \ }))
-  call add(links, pgmnt#hi#link('LspCodeLens', 'LspInlayHint'))
-  call add(links, pgmnt#hi#link('LspCodeLensSeparator', 'LspInlayHint'))
-  call add(links, pgmnt#hi#link('LspSignatureActiveParameter', 'Visual'))
+  call add(neovim_links, pgmnt#hi#link('LspCodeLens', 'LspInlayHint'))
+  call add(neovim_links, pgmnt#hi#link('LspCodeLensSeparator', 'LspInlayHint'))
+  call add(neovim_links, pgmnt#hi#link('LspSignatureActiveParameter', 'Visual'))
   " }}}
 
   " diagnostic highlights {{{
