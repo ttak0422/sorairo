@@ -1,4 +1,4 @@
-" build with pgmnt.vim (2026-05-06 23:50+0900)
+" build with pgmnt.vim (2026-05-07 00:27+0900)
 if !has('gui_running') && &t_Co < 256
   finish
 endif
@@ -115,47 +115,47 @@ else
   hi DiffDelete gui=strikethrough guibg=#ec909a guifg=#d73445
   hi DiffText guibg=#3d6b79 guifg=#fdfdff
   hi ErrorMsg gui=bold,underline guifg=#e9616f guisp=#e9616f
-  hi WinSeparator guifg=#bebebe
+  hi WinSeparator guifg=#a9a9a9
   hi Folded guibg=NONE guifg=#666666
   hi FoldColumn guibg=NONE guifg=#666666
-  hi SignColumn guifg=#546072
+  hi SignColumn guifg=#3f4c5e
   hi IncSearch guibg=#ac8f37 guifg=#fdfdff
-  hi LineNr guifg=#bebebe
-  hi CursorLineNr cterm=bold gui=bold guifg=#bebebe
-  hi MatchParen gui=bold guibg=#f7f7fa guifg=#a5a5a5
-  hi ModeMsg gui=bold guifg=#546072
-  hi MsgArea guifg=#a5a5a5
+  hi LineNr guifg=#a9a9a9
+  hi CursorLineNr cterm=bold gui=bold guifg=#a9a9a9
+  hi MatchParen gui=bold guibg=#f7f7fa guifg=#8e9092
+  hi ModeMsg gui=bold guifg=#3f4c5e
+  hi MsgArea guifg=#8e9092
   hi MoreMsg gui=bold guifg=#d5b042
   hi NonText guifg=#7f7f7f
-  hi Normal guibg=#fdfdff guifg=#546072
-  hi NormalFloat guibg=#f7f7fa guifg=#546072
+  hi Normal guibg=#fdfdff guifg=#3f4c5e
+  hi NormalFloat guibg=#f7f7fa guifg=#3f4c5e
   hi FloatTitle guifg=#e8862a
-  hi FloatFooter guifg=#a5a5a5
-  hi Pmenu gui=NONE guibg=#f7f7fa guifg=#546072
+  hi FloatFooter guifg=#8e9092
+  hi Pmenu gui=NONE guibg=#f7f7fa guifg=#3f4c5e
   hi PmenuSel gui=bold guibg=#105b91 guifg=#fdfdff
   hi PmenuSbar guibg=#d4d4df
   hi PmenuThumb guibg=#666666
   hi ComplMatchIns gui=bold
-  hi QuickFixLine gui=bold,underline guibg=NONE guifg=#546072 guisp=#546072
+  hi QuickFixLine gui=bold,underline guibg=NONE guifg=#3f4c5e guisp=#3f4c5e
   hi Search guibg=#0e80d1 guifg=#fdfdff
-  hi SpecialKey guifg=#bebebe
+  hi SpecialKey guifg=#a9a9a9
   hi SpellBad gui=undercurl guifg=#e9616f guisp=#e9616f
   hi SpellCap gui=undercurl guifg=#d5b042 guisp=#d5b042
   hi SpellLocal gui=undercurl guifg=#4b8b9f guisp=#4b8b9f
   hi SpellRare gui=undercurl guifg=#d147ae guisp=#d147ae
-  hi StatusLine cterm=NONE gui=NONE guibg=#f7f7fa guifg=#a5a5a5
-  hi StatusLineNC cterm=NONE gui=NONE guibg=#f7f7fa guifg=#868686
-  hi TabLine guibg=#f7f7fa guifg=#a5a5a5
-  hi TabLineFill guibg=#f7f7fa guifg=#a5a5a5
-  hi TabLineSel guibg=#d4d4df guifg=#868686
-  hi Title gui=bold guibg=NONE guifg=#546072
+  hi StatusLine cterm=NONE gui=NONE guibg=#f7f7fa guifg=#8e9092
+  hi StatusLineNC cterm=NONE gui=NONE guibg=#f7f7fa guifg=#717171
+  hi TabLine guibg=#f7f7fa guifg=#8e9092
+  hi TabLineFill guibg=#f7f7fa guifg=#8e9092
+  hi TabLineSel guibg=#d4d4df guifg=#717171
+  hi Title gui=bold guibg=NONE guifg=#3f4c5e
   hi Visual guibg=#d4d4df
   hi EndOfBuffer guifg=#fdfdff
   hi WarningMsg gui=bold,underline guifg=#d5b042 guisp=#d5b042
   hi Whitespace guifg=#7f7f7f
-  hi WinBar gui=bold guibg=NONE guifg=#a5a5a5
-  hi WinBarNC guibg=NONE guifg=#a5a5a5
-  hi Comment gui=italic guifg=#a5a5a5
+  hi WinBar gui=bold guibg=NONE guifg=#8e9092
+  hi WinBarNC guibg=NONE guifg=#8e9092
+  hi Comment gui=italic guifg=#8e9092
   hi Constant gui=bold guifg=#ac8f37
   hi String guifg=#36956d
   hi Number guifg=#d147ae
@@ -179,7 +179,7 @@ else
   hi Structure guifg=#d5b042
   hi Typedef guifg=#e8862a
   hi Special guifg=#d5b042
-  hi Delimiter guifg=#546072
+  hi Delimiter guifg=#3f4c5e
   hi SpecialComment gui=italic guifg=#666666
   hi Debug guifg=#d5b042
   hi Underlined gui=underline
@@ -312,9 +312,9 @@ if has('nvim')
     hi GitSignsAddPreview guibg=NONE guifg=#82ccad
     hi GitSignsDeletePreview guibg=NONE guifg=#eb8c96
   else
-    hi @variable guifg=#546072
+    hi @variable guifg=#3f4c5e
     hi @variable.parameter guifg=#d147ae
-    hi @variable.member gui=italic guifg=#546072
+    hi @variable.member gui=italic guifg=#3f4c5e
     hi @constant gui=bold guifg=#ac8f37
     hi @module guifg=#d674bd
     hi @string.regexp guifg=#b7671d
@@ -504,7 +504,7 @@ if has('nvim')
     let g:terminal_color_14 = '#8fc4d4'
     let g:terminal_color_15 = '#dfe3eb'
   else
-    let g:terminal_color_0 = '#546072'
+    let g:terminal_color_0 = '#3f4c5e'
     let g:terminal_color_1 = '#e9616f'
     let g:terminal_color_2 = '#36956d'
     let g:terminal_color_3 = '#d5b042'
@@ -512,20 +512,20 @@ if has('nvim')
     let g:terminal_color_5 = '#9870c6'
     let g:terminal_color_6 = '#4b8b9f'
     let g:terminal_color_7 = '#666666'
-    let g:terminal_color_8 = '#445267'
+    let g:terminal_color_8 = '#313f52'
     let g:terminal_color_9 = '#eb4556'
     let g:terminal_color_10 = '#2a8660'
     let g:terminal_color_11 = '#d5a927'
     let g:terminal_color_12 = '#0772be'
     let g:terminal_color_13 = '#8a58c4'
     let g:terminal_color_14 = '#3d7e92'
-    let g:terminal_color_15 = '#a5a5a5'
+    let g:terminal_color_15 = '#8e9092'
   endif
 else
   if &background ==# 'dark'
     let g:terminal_ansi_colors = ['#8e97ad', '#e47581', '#70c19f', '#e4c975', '#61aee5', '#b090d4', '#7cb7c9', '#c4cbdd', '#979eaf', '#eb8c96', '#82ccad', '#ebd48c', '#7dbeec', '#bfa4de', '#8fc4d4', '#dfe3eb']
   else
-    let g:terminal_ansi_colors = ['#546072', '#e9616f', '#36956d', '#d5b042', '#0e80d1', '#9870c6', '#4b8b9f', '#666666', '#445267', '#eb4556', '#2a8660', '#d5a927', '#0772be', '#8a58c4', '#3d7e92', '#a5a5a5']
+    let g:terminal_ansi_colors = ['#3f4c5e', '#e9616f', '#36956d', '#d5b042', '#0e80d1', '#9870c6', '#4b8b9f', '#666666', '#313f52', '#eb4556', '#2a8660', '#d5a927', '#0772be', '#8a58c4', '#3d7e92', '#8e9092']
   endif
 endif
 

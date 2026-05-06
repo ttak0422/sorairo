@@ -16,7 +16,7 @@ function! s:create_light_palette() abort
 
   " pgmnt#color#rgb(hue_base, 1.00, 0.99)
   let g.normal_bg = pgmnt#color#rgb(253, 253, 255)
-  let g.normal_fg = pgmnt#color#hsl(hue_base, 0.15, 0.39)
+  let g.normal_fg = pgmnt#color#hsl(hue_base, 0.20, 0.31)
 
   let g.white   = pgmnt#color#hsl(hue_base, 0.00, 0.93)
   let g.grey    = pgmnt#color#hsl(hue_base, 0.00, 0.40)
