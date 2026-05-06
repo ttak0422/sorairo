@@ -1,13 +1,13 @@
 " palette {{{
 function! s:create_palette() abort
 
-  let hue_base    = 240
+  let hue_base    = 215
   let hue_red     = 354
-  let hue_green   = 101
+  let hue_green   = 155
   let hue_blue    = 205
   let hue_cyan    = 194
-  let hue_magenta = 330
-  let hue_purple  = 276
+  let hue_magenta = 315
+  let hue_purple  = 268
   let hue_yellow  =  45
   let hue_orange  =  29
 
@@ -60,6 +60,7 @@ function! s:create_palette() abort
   let g.green_tint_fg = pgmnt#color#mix(g.green, g.normal_fg, 0.40)
   let g.blue_tint_bg  = pgmnt#color#mix(g.blue,  g.normal_bg, 0.15)
   let g.blue_tint_fg  = pgmnt#color#mix(g.blue,  g.normal_fg, 0.40)
+  let g.cyan_tint_bg  = pgmnt#color#mix(g.cyan,  g.normal_bg, 0.15)
 
   let g.dim_bg = pgmnt#color#adjust_color(
         \ g.normal_bg, {
@@ -90,7 +91,7 @@ function! s:create_palette() abort
         \ g.blue,
         \ g.purple,
         \ g.cyan,
-        \ g.cursorline_bg,
+        \ g.grey,
         \ pgmnt#color#adjust_color(g.normal_fg, {'saturation': +0.05, 'lightness': -0.05}),
         \ pgmnt#color#adjust_color(g.red,       {'saturation': +0.05, 'lightness': -0.05}),
         \ pgmnt#color#adjust_color(g.green,     {'saturation': +0.05, 'lightness': -0.05}),
@@ -144,24 +145,25 @@ function! s:create_highlights(palette)
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffAdd' ], {
-        \ 'guifg': 'NONE',
+        \ 'guifg': c.dark_green,
         \ 'guibg': c.light_green,
+        \ 'gui': 'bold',
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffChange' ], {
-        \ 'guifg': 'NONE',
+        \ 'guifg': c.dark_blue,
         \ 'guibg': c.light_blue,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffDelete' ], {
-        \ 'guifg': 'NONE',
+        \ 'guifg': c.dark_red,
         \ 'guibg': c.light_red,
-        \ 'gui': 'NONE',
+        \ 'gui': 'strikethrough',
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffText' ], {
-        \ 'guifg': 'NONE',
-        \ 'guibg': c.light_cyan,
+        \ 'guifg': c.normal_bg,
+        \ 'guibg': c.dark_cyan,
         \ }))
   call add(neovim_links, pgmnt#hi#link('DiffTextAdd', 'DiffText'))
   call add(links, pgmnt#hi#link('TermCursor', 'Cursor'))
@@ -732,7 +734,7 @@ function! s:create_highlights(palette)
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@comment.todo' ], {
         \ 'guifg': c.normal_bg,
-        \ 'guibg': c.light_cyan,
+        \ 'guibg': c.cyan,
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@comment.note' ], {
@@ -922,16 +924,19 @@ function! s:create_highlights(palette)
         \ ['GitSignsAdd'], {
         \ 'guifg': c.light_green,
         \ 'guibg': 'NONE',
+        \ 'gui': 'bold',
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ ['GitSignsChange'], {
         \ 'guifg': c.light_blue,
         \ 'guibg': 'NONE',
+        \ 'gui': 'bold',
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ ['GitSignsDelete'], {
         \ 'guifg': c.light_red,
         \ 'guibg': 'NONE',
+        \ 'gui': 'bold',
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ ['GitSignsAddInline'], {
