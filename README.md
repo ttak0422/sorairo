@@ -21,4 +21,12 @@ set termguicolors
 colorscheme sorairo
 ```
 
+For dark mode, set `background` before loading the colorscheme.
+
+```vim
+set termguicolors
+set background=dark
+colorscheme sorairo
+```
+
 Use `:SorairoPreview` to open a scratch buffer that previews representative highlight groups.

@@ -1,5 +1,5 @@
 " palette {{{
-function! s:create_palette() abort
+function! s:create_light_palette() abort
 
   let hue_base    = 215
   let hue_red     = 354
@@ -12,6 +12,7 @@ function! s:create_palette() abort
   let hue_orange  =  29
 
   let g = {}
+  let g.background = 'light'
 
   " pgmnt#color#rgb(hue_base, 1.00, 0.99)
   let g.normal_bg = pgmnt#color#rgb(253, 253, 255)
@@ -62,6 +63,14 @@ function! s:create_palette() abort
   let g.blue_tint_fg  = pgmnt#color#mix(g.blue,  g.normal_fg, 0.40)
   let g.cyan_tint_bg  = pgmnt#color#mix(g.cyan,  g.normal_bg, 0.15)
 
+  let g.diff_add_fg    = g.dark_green
+  let g.diff_add_bg    = g.light_green
+  let g.diff_change_fg = g.dark_blue
+  let g.diff_change_bg = g.light_blue
+  let g.diff_delete_fg = g.dark_red
+  let g.diff_delete_bg = g.light_red
+  let g.inline_fg      = g.white
+
   let g.dim_bg = pgmnt#color#adjust_color(
         \ g.normal_bg, {
         \   'saturation': -0.75,
@@ -100,6 +109,108 @@ function! s:create_palette() abort
         \ pgmnt#color#adjust_color(g.purple,    {'saturation': +0.05, 'lightness': -0.05}),
         \ pgmnt#color#adjust_color(g.cyan,      {'saturation': +0.05, 'lightness': -0.05}),
         \ g.dim_fg,
+        \ ]
+
+  return g
+endfunction
+
+function! s:create_dark_palette() abort
+
+  let hue_base    = 222
+  let hue_red     = 354
+  let hue_green   = 155
+  let hue_blue    = 205
+  let hue_cyan    = 194
+  let hue_magenta = 315
+  let hue_purple  = 268
+  let hue_yellow  =  45
+  let hue_orange  =  29
+
+  let g = {}
+  let g.background = 'dark'
+
+  let g.normal_bg = pgmnt#color#rgb(34, 43, 64)
+  let g.normal_fg = pgmnt#color#hsl(hue_base, 0.28, 0.82)
+
+  let g.white   = pgmnt#color#hsl(hue_base, 0.24, 0.90)
+  let g.grey    = pgmnt#color#hsl(hue_base, 0.13, 0.64)
+  let g.black   = pgmnt#color#hsl(hue_base, 0.24, 0.24)
+
+  let g.red     = pgmnt#color#hsl(hue_red,     0.68, 0.68)
+  let g.green   = pgmnt#color#hsl(hue_green,   0.40, 0.60)
+  let g.blue    = pgmnt#color#hsl(hue_blue,    0.72, 0.64)
+  let g.cyan    = pgmnt#color#hsl(hue_cyan,    0.42, 0.64)
+  let g.magenta = pgmnt#color#hsl(hue_magenta, 0.52, 0.68)
+  let g.purple  = pgmnt#color#hsl(hue_purple,  0.45, 0.70)
+  let g.yellow  = pgmnt#color#hsl(hue_yellow,  0.68, 0.68)
+  let g.orange  = pgmnt#color#hsl(hue_orange,  0.72, 0.66)
+
+  let g.dark_white   = pgmnt#color#adjust_color(g.white,   {'saturation': +0.02, 'lightness': -0.08})
+  let g.dark_grey    = pgmnt#color#adjust_color(g.grey,    {'saturation': +0.02, 'lightness': -0.12})
+  let g.dark_black   = pgmnt#color#adjust_color(g.black,   {'saturation': -0.04, 'lightness': -0.06})
+  let g.dark_red     = pgmnt#color#adjust_color(g.red,     {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_green   = pgmnt#color#adjust_color(g.green,   {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_blue    = pgmnt#color#adjust_color(g.blue,    {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_cyan    = pgmnt#color#adjust_color(g.cyan,    {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_magenta = pgmnt#color#adjust_color(g.magenta, {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_purple  = pgmnt#color#adjust_color(g.purple,  {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_yellow  = pgmnt#color#adjust_color(g.yellow,  {'saturation': +0.02, 'lightness': -0.04})
+  let g.dark_orange  = pgmnt#color#adjust_color(g.orange,  {'saturation': +0.02, 'lightness': -0.04})
+
+  let g.light_white   = pgmnt#color#adjust_color(g.white,   {'saturation': +0.01, 'lightness': +0.05})
+  let g.light_grey    = pgmnt#color#adjust_color(g.grey,    {'saturation': +0.02, 'lightness': +0.13})
+  let g.light_black   = pgmnt#color#adjust_color(g.black,   {'saturation': -0.04, 'lightness': +0.12})
+  let g.light_red     = pgmnt#color#adjust_color(g.red,     {'saturation': +0.03, 'lightness': +0.06})
+  let g.light_green   = pgmnt#color#adjust_color(g.green,   {'saturation': +0.03, 'lightness': +0.06})
+  let g.light_blue    = pgmnt#color#adjust_color(g.blue,    {'saturation': +0.03, 'lightness': +0.07})
+  let g.light_cyan    = pgmnt#color#adjust_color(g.cyan,    {'saturation': +0.03, 'lightness': +0.06})
+  let g.light_magenta = pgmnt#color#adjust_color(g.magenta, {'saturation': +0.03, 'lightness': +0.06})
+  let g.light_purple  = pgmnt#color#adjust_color(g.purple,  {'saturation': +0.03, 'lightness': +0.06})
+  let g.light_yellow  = pgmnt#color#adjust_color(g.yellow,  {'saturation': +0.03, 'lightness': +0.06})
+  let g.light_orange  = pgmnt#color#adjust_color(g.orange,  {'saturation': +0.03, 'lightness': +0.06})
+
+  let g.red_tint_bg   = pgmnt#color#mix(g.red,   g.normal_bg, 0.20)
+  let g.red_tint_fg   = pgmnt#color#mix(g.red,   g.normal_fg, 0.42)
+  let g.green_tint_bg = pgmnt#color#mix(g.green, g.normal_bg, 0.20)
+  let g.green_tint_fg = pgmnt#color#mix(g.green, g.normal_fg, 0.42)
+  let g.blue_tint_bg  = pgmnt#color#mix(g.blue,  g.normal_bg, 0.20)
+  let g.blue_tint_fg  = pgmnt#color#mix(g.blue,  g.normal_fg, 0.42)
+  let g.cyan_tint_bg  = pgmnt#color#mix(g.cyan,  g.normal_bg, 0.20)
+
+  let g.diff_add_fg    = g.light_green
+  let g.diff_add_bg    = g.green_tint_bg
+  let g.diff_change_fg = g.light_blue
+  let g.diff_change_bg = g.blue_tint_bg
+  let g.diff_delete_fg = g.light_red
+  let g.diff_delete_bg = g.red_tint_bg
+  let g.inline_fg      = g.normal_bg
+
+  let g.dim_bg = pgmnt#color#hsl(hue_base, 0.22, 0.22)
+  let g.dim_fg = pgmnt#color#hsl(hue_base, 0.16, 0.62)
+  let g.dark_dim_bg  = pgmnt#color#adjust_color(g.dim_bg, {'saturation': -0.02, 'lightness': +0.04})
+  let g.dark_dim_fg  = pgmnt#color#adjust_color(g.dim_fg, {'saturation': -0.03, 'lightness': -0.13})
+  let g.light_dim_bg = pgmnt#color#adjust_color(g.dim_bg, {'saturation': +0.03, 'lightness': +0.07})
+  let g.light_dim_fg = pgmnt#color#adjust_color(g.dim_fg, {'saturation': +0.03, 'lightness': +0.13})
+
+  let g.cursorline_bg = pgmnt#color#hsl(hue_base, 0.23, 0.25)
+
+  let g.term_colors = [
+        \ g.dim_fg,
+        \ g.red,
+        \ g.green,
+        \ g.yellow,
+        \ g.blue,
+        \ g.purple,
+        \ g.cyan,
+        \ g.normal_fg,
+        \ g.grey,
+        \ g.light_red,
+        \ g.light_green,
+        \ g.light_yellow,
+        \ g.light_blue,
+        \ g.light_purple,
+        \ g.light_cyan,
+        \ g.white,
         \ ]
 
   return g
@@ -145,19 +256,19 @@ function! s:create_highlights(palette)
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffAdd' ], {
-        \ 'guifg': c.dark_green,
-        \ 'guibg': c.light_green,
+        \ 'guifg': c.diff_add_fg,
+        \ 'guibg': c.diff_add_bg,
         \ 'gui': 'bold',
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffChange' ], {
-        \ 'guifg': c.dark_blue,
-        \ 'guibg': c.light_blue,
+        \ 'guifg': c.diff_change_fg,
+        \ 'guibg': c.diff_change_bg,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'DiffDelete' ], {
-        \ 'guifg': c.dark_red,
-        \ 'guibg': c.light_red,
+        \ 'guifg': c.diff_delete_fg,
+        \ 'guibg': c.diff_delete_bg,
         \ 'gui': 'strikethrough',
         \ }))
   call extend(groups, pgmnt#hi#group(
@@ -940,19 +1051,19 @@ function! s:create_highlights(palette)
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ ['GitSignsAddInline'], {
-        \ 'guifg': c.white,
+        \ 'guifg': c.inline_fg,
         \ 'guibg': c.light_green,
         \ 'gui': 'bold',
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ ['GitSignsChangeInline'], {
-        \ 'guifg': c.white,
+        \ 'guifg': c.inline_fg,
         \ 'guibg': c.light_blue,
         \ 'gui': 'bold',
         \ }))
   call extend(neovim_groups, pgmnt#hi#group(
         \ ['GitSignsDeleteInline'], {
-        \ 'guifg': c.white,
+        \ 'guifg': c.inline_fg,
         \ 'guibg': c.light_red,
         \ 'gui': 'bold',
         \ }))
@@ -979,16 +1090,21 @@ function! s:create_highlights(palette)
 endfunction
 
 function! s:create_context()
-  let l = s:create_highlights(s:create_palette())
-  let links = l.links
-  let neovim_links = l.neovim_links
+  let light = s:create_highlights(s:create_light_palette())
+  let dark = s:create_highlights(s:create_dark_palette())
+  let links = light.links
+  let neovim_links = light.neovim_links
 
   return {
         \ 'modified': strftime('%Y-%m-%d %H:%M%z'),
-        \ 'light_groups': l.groups,
-        \ 'light_neovim_groups': l.neovim_groups,
-        \ 'light_vim_term': l.vim_term,
-        \ 'light_neovim_term': l.neovim_term,
+        \ 'light_groups': light.groups,
+        \ 'light_neovim_groups': light.neovim_groups,
+        \ 'light_vim_term': light.vim_term,
+        \ 'light_neovim_term': light.neovim_term,
+        \ 'dark_groups': dark.groups,
+        \ 'dark_neovim_groups': dark.neovim_groups,
+        \ 'dark_vim_term': dark.vim_term,
+        \ 'dark_neovim_term': dark.neovim_term,
         \ 'links': links,
         \ 'neovim_links': neovim_links,
         \ }

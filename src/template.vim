@@ -8,14 +8,30 @@ if exists('syntax_on')
 endif
 set termguicolors
 let g:colors_name = 'sorairo'
-{{ light_groups }}
+if &background ==# 'dark'
+  {{ dark_groups }}
+else
+  {{ light_groups }}
+endif
 {{ links }}
 if has('nvim')
-  {{ light_neovim_groups }}
+  if &background ==# 'dark'
+    {{ dark_neovim_groups }}
+  else
+    {{ light_neovim_groups }}
+  endif
   {{ neovim_links }}
-  {{ light_neovim_term }}
+  if &background ==# 'dark'
+    {{ dark_neovim_term }}
+  else
+    {{ light_neovim_term }}
+  endif
 else
-  {{ light_vim_term }}
+  if &background ==# 'dark'
+    {{ dark_vim_term }}
+  else
+    {{ light_vim_term }}
+  endif
 endif
 
 command! SorairoPreview call sorairo#preview#open()
