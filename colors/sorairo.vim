@@ -1,4 +1,4 @@
-" build with pgmnt.vim (2026-05-07 00:27+0900)
+" build with pgmnt.vim (2026-05-09 22:50+0900)
 if !has('gui_running') && &t_Co < 256
   finish
 endif
@@ -65,24 +65,24 @@ if &background ==# 'dark'
   hi Number guifg=#d782c2
   hi Boolean guifg=#d782c2
   hi Float guifg=#d782c2
-  hi Identifier guifg=#d782c2
-  hi Function guifg=#e6a669
-  hi Statement gui=italic guifg=#e47581
-  hi Conditional guifg=#e47581
-  hi Repeat guifg=#e47581
-  hi Operator guifg=#e4c975
-  hi Keyword guifg=#e47581
-  hi Exception guifg=#e47581
-  hi PreProc guifg=#d782c2
-  hi Include guifg=#d782c2
-  hi Define guifg=#d782c2
+  hi Identifier guifg=#c4cbdd
+  hi Function guifg=#6bb0c5
+  hi Statement gui=italic guifg=#4da5e4
+  hi Conditional guifg=#4da5e4
+  hi Repeat guifg=#4da5e4
+  hi Operator guifg=#8e97ad
+  hi Keyword guifg=#4da5e4
+  hi Exception guifg=#4da5e4
+  hi PreProc guifg=#7cb7c9
+  hi Include guifg=#7cb7c9
+  hi Define guifg=#7cb7c9
   hi Macro guifg=#7cb7c9
   hi PreCondit guifg=#d782c2
   hi Type guifg=#61aee5
-  hi StorageClass guifg=#e6a669
-  hi Structure guifg=#e4c975
-  hi Typedef guifg=#e6a669
-  hi Special guifg=#e4c975
+  hi StorageClass guifg=#7cb7c9
+  hi Structure guifg=#4da5e4
+  hi Typedef guifg=#4da5e4
+  hi Special guifg=#7cb7c9
   hi Delimiter guifg=#c4cbdd
   hi SpecialComment gui=italic guifg=#979eaf
   hi Debug guifg=#e4c975
@@ -161,24 +161,24 @@ else
   hi Number guifg=#d147ae
   hi Boolean guifg=#d147ae
   hi Float guifg=#d147ae
-  hi Identifier guifg=#d147ae
-  hi Function guifg=#e8862a
-  hi Statement gui=italic guifg=#e9616f
-  hi Conditional guifg=#e9616f
-  hi Repeat guifg=#e9616f
-  hi Operator guifg=#d5b042
-  hi Keyword guifg=#e9616f
-  hi Exception guifg=#e9616f
-  hi PreProc guifg=#d147ae
-  hi Include guifg=#d147ae
-  hi Define guifg=#d147ae
+  hi Identifier guifg=#3f4c5e
+  hi Function guifg=#3d6b79
+  hi Statement gui=italic guifg=#105b91
+  hi Conditional guifg=#105b91
+  hi Repeat guifg=#105b91
+  hi Operator guifg=#8e9092
+  hi Keyword guifg=#105b91
+  hi Exception guifg=#105b91
+  hi PreProc guifg=#4b8b9f
+  hi Include guifg=#4b8b9f
+  hi Define guifg=#4b8b9f
   hi Macro guifg=#4b8b9f
   hi PreCondit guifg=#d147ae
   hi Type guifg=#0e80d1
-  hi StorageClass guifg=#e8862a
-  hi Structure guifg=#d5b042
-  hi Typedef guifg=#e8862a
-  hi Special guifg=#d5b042
+  hi StorageClass guifg=#4b8b9f
+  hi Structure guifg=#105b91
+  hi Typedef guifg=#105b91
+  hi Special guifg=#4b8b9f
   hi Delimiter guifg=#3f4c5e
   hi SpecialComment gui=italic guifg=#666666
   hi Debug guifg=#d5b042
@@ -261,17 +261,17 @@ hi! link DiagnosticUnnecessary DiagnosticUnderlineHint
 if has('nvim')
   if &background ==# 'dark'
     hi @variable guifg=#c4cbdd
-    hi @variable.parameter guifg=#d782c2
+    hi @variable.parameter guifg=#6bb0c5
     hi @variable.member gui=italic guifg=#c4cbdd
     hi @constant gui=bold guifg=#e2c362
-    hi @module guifg=#e097ce
+    hi @module guifg=#4da5e4
     hi @string.regexp guifg=#e59b55
     hi @string.escape gui=bold guifg=#e59b55
     hi @string.special.symbol gui=bold guifg=#70c19f
     hi @string.special.path gui=underline guifg=#70c19f
     hi @attribute guifg=#7cb7c9
-    hi @punctuation.delimiter guifg=#d370bb
-    hi @punctuation.bracket guifg=#d370bb
+    hi @punctuation.delimiter guifg=#8e97ad
+    hi @punctuation.bracket guifg=#8e97ad
     hi @comment.error guibg=#eb8c96 guifg=#222b40
     hi @comment.warning guibg=#ebd48c guifg=#222b40
     hi @comment.todo guibg=#7cb7c9 guifg=#222b40
@@ -313,17 +313,17 @@ if has('nvim')
     hi GitSignsDeletePreview guibg=NONE guifg=#eb8c96
   else
     hi @variable guifg=#3f4c5e
-    hi @variable.parameter guifg=#d147ae
+    hi @variable.parameter guifg=#3d6b79
     hi @variable.member gui=italic guifg=#3f4c5e
     hi @constant gui=bold guifg=#ac8f37
-    hi @module guifg=#d674bd
+    hi @module guifg=#105b91
     hi @string.regexp guifg=#b7671d
     hi @string.escape gui=bold guifg=#b7671d
     hi @string.special.symbol gui=bold guifg=#36956d
     hi @string.special.path gui=underline guifg=#36956d
     hi @attribute guifg=#4b8b9f
-    hi @punctuation.delimiter guifg=#a63489
-    hi @punctuation.bracket guifg=#a63489
+    hi @punctuation.delimiter guifg=#8e9092
+    hi @punctuation.bracket guifg=#8e9092
     hi @comment.error guibg=#ec909a guifg=#fdfdff
     hi @comment.warning guibg=#d9bf70 guifg=#fdfdff
     hi @comment.todo guibg=#4b8b9f guifg=#fdfdff
@@ -406,14 +406,14 @@ if has('nvim')
   hi! link @function.macro Macro
   hi! link @function.method @function
   hi! link @function.method.call @function.method
-  hi! link @constructor Identifier
+  hi! link @constructor Type
   hi! link @operator Operator
   hi! link @keyword Keyword
   hi! link @keyword.coroutine @keyword
   hi! link @keyword.function @keyword
   hi! link @keyword.operator Operator
   hi! link @keyword.import PreProc
-  hi! link @keyword.type Structure
+  hi! link @keyword.type Type
   hi! link @keyword.modifier StorageClass
   hi! link @keyword.repeat Repeat
   hi! link @keyword.return @keyword
@@ -467,7 +467,7 @@ if has('nvim')
   hi! link @lsp.type.property @property
   hi! link @lsp.type.regexp @string.regexp
   hi! link @lsp.type.string String
-  hi! link @lsp.type.struct Structure
+  hi! link @lsp.type.struct Type
   hi! link @lsp.type.type Type
   hi! link @lsp.type.typeParameter Type
   hi! link @lsp.type.variable @variable

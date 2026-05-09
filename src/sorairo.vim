@@ -544,33 +544,33 @@ function! s:create_highlights(palette)
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Identifier' ], {
-        \ 'guifg': c.magenta,
+        \ 'guifg': c.normal_fg,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Function' ], {
-        \ 'guifg': c.orange,
+        \ 'guifg': c.dark_cyan,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Statement' ], {
-        \ 'guifg': c.red,
+        \ 'guifg': c.dark_blue,
         \ 'gui': 'italic',
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Conditional', 'Repeat' ], {
-        \ 'guifg': c.red,
+        \ 'guifg': c.dark_blue,
         \ }))
   call add(links, pgmnt#hi#link('Label', 'Keyword'))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Operator' ], {
-        \ 'guifg': c.yellow,
+        \ 'guifg': c.dim_fg,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Keyword', 'Exception' ], {
-        \ 'guifg': c.red,
+        \ 'guifg': c.dark_blue,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'PreProc', 'Include', 'Define' ], {
-        \ 'guifg': c.magenta,
+        \ 'guifg': c.cyan,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Macro' ], {
@@ -586,19 +586,19 @@ function! s:create_highlights(palette)
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'StorageClass' ], {
-        \ 'guifg': c.orange,
+        \ 'guifg': c.cyan,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Structure' ], {
-        \ 'guifg': c.yellow,
+        \ 'guifg': c.dark_blue,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Typedef' ], {
-        \ 'guifg': c.orange,
+        \ 'guifg': c.dark_blue,
         \ }))
   call extend(groups, pgmnt#hi#group(
         \ [ 'Special' ], {
-        \ 'guifg': c.yellow,
+        \ 'guifg': c.cyan,
         \ }))
   call add(links, pgmnt#hi#link('SpecialChar', 'Special'))
   call add(links, pgmnt#hi#link('Tag', 'Special'))
@@ -744,7 +744,7 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('@variable.builtin', '@variable'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@variable.parameter' ], {
-        \ 'guifg': c.magenta,
+        \ 'guifg': c.dark_cyan,
         \ }))
   call add(neovim_links, pgmnt#hi#link('@variable.parameter.builtin', '@variable.parameter'))
   call extend(neovim_groups, pgmnt#hi#group(
@@ -761,7 +761,7 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('@constant.macro', '@constant'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@module' ], {
-        \ 'guifg': c.light_magenta,
+        \ 'guifg': c.dark_blue,
         \ }))
   call add(neovim_links, pgmnt#hi#link('@module.builtin', '@module'))
   call add(neovim_links, pgmnt#hi#link('@label', 'Label'))
@@ -808,14 +808,14 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('@function.macro', 'Macro'))
   call add(neovim_links, pgmnt#hi#link('@function.method', '@function'))
   call add(neovim_links, pgmnt#hi#link('@function.method.call', '@function.method'))
-  call add(neovim_links, pgmnt#hi#link('@constructor', 'Identifier'))
+  call add(neovim_links, pgmnt#hi#link('@constructor', 'Type'))
   call add(neovim_links, pgmnt#hi#link('@operator', 'Operator'))
   call add(neovim_links, pgmnt#hi#link('@keyword', 'Keyword'))
   call add(neovim_links, pgmnt#hi#link('@keyword.coroutine', '@keyword'))
   call add(neovim_links, pgmnt#hi#link('@keyword.function', '@keyword'))
   call add(neovim_links, pgmnt#hi#link('@keyword.operator', 'Operator'))
   call add(neovim_links, pgmnt#hi#link('@keyword.import', 'PreProc'))
-  call add(neovim_links, pgmnt#hi#link('@keyword.type', 'Structure'))
+  call add(neovim_links, pgmnt#hi#link('@keyword.type', 'Type'))
   call add(neovim_links, pgmnt#hi#link('@keyword.modifier', 'StorageClass'))
   call add(neovim_links, pgmnt#hi#link('@keyword.repeat', 'Repeat'))
   call add(neovim_links, pgmnt#hi#link('@keyword.return', '@keyword'))
@@ -827,7 +827,7 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('@keyword.directive.define', 'Define'))
   call extend(neovim_groups, pgmnt#hi#group(
         \ [ '@punctuation.delimiter', '@punctuation.bracket' ], {
-        \ 'guifg': c.dark_magenta,
+        \ 'guifg': c.dim_fg,
         \ }))
   call add(neovim_links, pgmnt#hi#link('@punctuation.special', 'Special'))
   call add(neovim_links, pgmnt#hi#link('@comment', 'Comment'))
@@ -953,7 +953,7 @@ function! s:create_highlights(palette)
   call add(neovim_links, pgmnt#hi#link('@lsp.type.property', '@property'))
   call add(neovim_links, pgmnt#hi#link('@lsp.type.regexp', '@string.regexp'))
   call add(neovim_links, pgmnt#hi#link('@lsp.type.string', 'String'))
-  call add(neovim_links, pgmnt#hi#link('@lsp.type.struct', 'Structure'))
+  call add(neovim_links, pgmnt#hi#link('@lsp.type.struct', 'Type'))
   call add(neovim_links, pgmnt#hi#link('@lsp.type.type', 'Type'))
   call add(neovim_links, pgmnt#hi#link('@lsp.type.typeParameter', 'Type'))
   call add(neovim_links, pgmnt#hi#link('@lsp.type.variable', '@variable'))
