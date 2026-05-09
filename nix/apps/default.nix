@@ -42,16 +42,17 @@ in
       colorscheme sorairo
     '';
     packages.myVimPackage = {
-      start = [
-        self'.packages.sorairo-vim
-      ];
+      start = [ self'.packages.sorairo-vim ];
     };
   };
   test-nvim = mkNeovimApp {
     plugins = with pkgs.vimPlugins; [
       {
         plugin = self'.packages.sorairo-vim;
-        config = "colorscheme sorairo";
+        config = ''
+          set background=light
+          colorscheme sorairo
+        '';
       }
       {
         plugin = nvim-treesitter.withAllGrammars;
