@@ -30,3 +30,31 @@ colorscheme sorairo
 ```
 
 Use `:SorairoPreview` to open a scratch buffer that previews representative highlight groups.
+
+## Offline solar palette experiment
+
+To inspect a developer prototype that selects colors from seasonal solar
+altitude, explicitly opt in from a checkout:
+
+```sh
+SORAIRO_SOLAR_EXPERIMENT=1 sh experiments/solar/run.sh
+```
+
+Requires Neovim 0.12.6 and Python 3.9+ with zoneinfo/tzdata. It reads the current
+colorscheme, generates 64 candidate states for each polarity, and runs serial
+contrast and isolated headless adapter checks. The final `Artifacts:` path
+contains original failures, all text-pair results, fixtures and test logs.
+Normal colorscheme loading stays static; this does not install a live scheduler.
+
+Thirty minutes is a reevaluation interval, not a random color cycle. All test
+times and locations are explicit fixtures. No location discovery, OS permission,
+appearance control, live editor connection, or network request is used.
+
+The text-pair target is 4.5:1 after hex rounding, not a guarantee of comfort.
+Fixed ANSI colors are separate: 14 of 16 original light ANSI colors still miss
+that target on the candidate backgrounds. meian's post-apply notification also
+cannot provide the required pre-apply arbitration. Terminal behavior, plugin
+cache integration and visual approval remain separate work.
+
+See [the experiment help](doc/sorairo-solar.txt) (`:help sorairo-solar-run` after
+help tags are generated) for operations, measurement scope and limitations.

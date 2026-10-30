@@ -1,0 +1,107 @@
+*sorairo-solar.txt*    Offline solar palette experiment
+
+The experiment is disabled by default and runs only in dedicated headless
+Neovim processes. Loading sorairo never starts its controller or timer.
+This is a developer experiment, not an automatic theme setup API.
+
+RUN                                                    *sorairo-solar-run*
+
+From the repository root: >
+    SORAIRO_SOLAR_EXPERIMENT=1 sh experiments/solar/run.sh
+<
+Requires Neovim 0.12.6 and Python 3.9+ with zoneinfo/tzdata. No extra Python
+packages or network access are needed. Runs are serial; no Nix build is used.
+Without the explicit environment opt-in the script exits before starting
+Neovim or allocating output files. Do not source the scripts into a live editor.
+
+The script reads colors/sorairo.vim from this checkout, generates 64 states per
+polarity, checks them, and reads every highlight definition back from isolated
+Neovim. It uses -u NONE, -i NONE, and dedicated XDG paths. It never connects to
+an existing Neovim server, loads meian, or changes system appearance/brightness.
+
+The final "Artifacts:" line names a unique temporary directory containing:
+
+  summary.json       Original failures, fixed foreground corrections, ANSI audit
+  contrast.csv.gz    Every text pair, context, hex value, ratio, and state
+  solar.csv          Four seasons x four named fixture locations x 48 UTC times
+  palettes.json      Generated candidate bank; not a supported live configuration
+  runtime.json       Adapter checks and isolated all-state readback timing
+  *-tests.log        Python and Neovim test results
+
+Artifacts are retained on failure too. No output is written into the checkout.
+
+MODEL                                                  *sorairo-solar-model*
+
+UTC plus explicit fixture latitude/longitude feeds USNO's approximate solar
+coordinates, sidereal time, and altitude formulae. Tokyo, Sydney and both poles
+are test locations, never inferred user defaults. There is no location lookup,
+permission request, API, credential, or position transmission. Missing location
+preserves a static state. The model approximates UT1 and TT with UTC and omits
+refraction, elevation, weather, and horizon obstruction; it is not a sunrise
+prediction service.
+
+Absolute altitude -30..60 degrees selects a quantized state 0..63. Winter's noon
+is not normalized to summer's maximum. Geometric altitude >=0 is day; below -12
+is night; the band between is dawn when rising or dusk when falling. These are
+tuning bands. Equal-altitude dawn/dusk share colors; nights below the lower
+bound stay at the minimum state.
+
+Thirty minutes is a reevaluation interval, not a random color cycle. The model
+tests startup, focus, resume, clock jumps, freeze and bias. Missed states are not
+replayed after sleep. The Python selector and Lua adapter remain separate test
+components; this does not install an end-to-end live scheduler.
+
+COLORS                                                 *sorairo-solar-colors*
+
+Only neutral surfaces interpolate in Oklab within the explicitly chosen light
+or dark polarity. There is no light/dark crossfade or automatic inversion.
+Trial night/day Normal backgrounds are #e9e3d9/#fdfdff (light) and
+#171b27/#222b40 (dark). Foregrounds are corrected offline against all candidate
+backgrounds and then fixed across the 64 states. Diagnostic/git roles, links,
+and style flags retain their meanings. The corrections change many existing
+foreground colors; visual approval remains separate from numerical acceptance.
+
+Out-of-gamut colors reduce chroma at fixed lightness/hue before hex rounding.
+This is strict sRGB gamut reduction, not CSS Color 4 local-MINDE. The generator
+uses Ottosson's published Oklab matrices and checks quantized hex colors.
+
+At the current v2 palette, 1,017 text/context pairs per state yield 130,176
+checks over 128 states, all >=4.5:1. Original light Comment/Normal is about
+3.15:1 and DiffAdd is about 2.77:1; those original failures remain in the report.
+Aliases are counted, so these are not 1,017 independent roles. The inventory
+includes authored git, diagnostic, notify, LSP, menu, float, diff and search
+groups. Arbitrary plugin namespaces/extmark composition, HUD/Komado/Mimori
+cache refreshes, and subjective comfort are not covered by this result.
+
+LIMITS                                                 *sorairo-solar-limits*
+
+Fixed ANSI colors are audited separately and never rewritten. On candidate
+light Normal backgrounds, 14 of 16 original ANSI colors fall below 4.5:1; dark
+passes only this specific background test. Existing terminals, arbitrary app
+backgrounds and ANSI-on-ANSI combinations remain unverified. Fixing terminal
+background alone does not guarantee all terminal contrast requirements.
+
+meian currently writes 'background' before calling its on_change callback, so
+that callback cannot arbitrate freeze or solar control before application.
+An appearance-only adapter or pre-apply arbitration hook is still required.
+The experiment makes no OS connection and does not claim to solve this conflict.
+
+The adapter trusts the bank generated in the same isolated run; it is not an
+arbitrary JSON import API. It checks same-state zero writes, changed definitions
+only, one timer, reload teardown, old callback rejection, rollback after an
+injected write failure, and preservation of another theme/namespace. Most
+lifecycle checks inject a scheduler; replacement/exit also close real libuv
+timers. No 30-minute wall-clock wait, long-running session, live terminal, or
+manual screen comfort test is performed.
+
+SOURCES                                                *sorairo-solar-sources*
+
+USNO solar: https://aa.usno.navy.mil/faq/sun_approx
+Sidereal time: https://aa.usno.navy.mil/faq/GAST
+Altitude: https://aa.usno.navy.mil/faq/alt_az
+Oklab: https://bottosson.github.io/posts/oklab/
+CSS Color 4: https://www.w3.org/TR/css-color-4/
+Contrast: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+Independent solar fixture: https://docs.nlr.gov/docs/fy08osti/34302.pdf
+
+vim:tw=78:ts=8:noet:ft=help:norl:
